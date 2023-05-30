@@ -1,4 +1,5 @@
 using _2_DM2.Learning.WebAPI.Configuration;
+using _3_DM2.Learning.Application.AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -15,6 +16,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureJWT(builder.Configuration);
 
 builder.Services.AddAuthorization();
+
+builder.Services.AddAutoMapper(typeof(DomainToViewModel));
+
+builder.Services.ResolveDependencies();
 
 var app = builder.Build();
 

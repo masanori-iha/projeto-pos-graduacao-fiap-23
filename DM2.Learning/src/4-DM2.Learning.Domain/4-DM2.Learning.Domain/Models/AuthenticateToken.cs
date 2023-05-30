@@ -8,10 +8,7 @@ namespace _4_DM2.Learning.Domain.Models
 {
     public class AuthenticateToken
     {
-        public AuthenticateToken(string token)
-        {
-            Token = token;
-        }
-        public string Token { get; set; }
+        public bool Authenticate { get; set; }
+        public string? Token { get; set; }
     }
 }
