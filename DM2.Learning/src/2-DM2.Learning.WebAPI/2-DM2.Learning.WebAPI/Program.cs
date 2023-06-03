@@ -1,8 +1,5 @@
 using _2_DM2.Learning.WebAPI.Configuration;
 using _3_DM2.Learning.Application.AutoMapper;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.ConfigureSwagger();
 
 builder.Services.ConfigureJWT(builder.Configuration);
 
@@ -20,6 +18,10 @@ builder.Services.AddAuthorization();
 builder.Services.AddAutoMapper(typeof(DomainToViewModel));
 
 builder.Services.ResolveDependencies();
+
+builder.Services.AddAuthentication();
+
+builder.Services.ConfigureIdentity(builder.Configuration);
 
 var app = builder.Build();
 

@@ -1,8 +1,10 @@
 ﻿using _4_DM2.Learning.Domain.Interfaces.Domains;
+using _4_DM2.Learning.Domain.Interfaces.Repositories;
 using _4_DM2.Learning.Domain.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text;
 
@@ -11,15 +13,18 @@ namespace _3_DM2.Learning.Application.Services
     public class LoginService : ILoginService
     {
         private readonly IConfiguration _configuration;
+        private readonly IUserRpository _userRpository;
 
-        public LoginService(IConfiguration configuration)
+        public LoginService(IConfiguration configuration,
+                            IUserRpository userRpository)
         {
             _configuration = configuration;
+            _userRpository = userRpository;
         }
 
         public async Task<AuthenticateToken> Authenticate(string login, string password)
         {
-            var authenticated = true; //change when implement database 
+            var authenticated = await _userRpository.ValidateUser(login, password);
             var jwtConfiguration = _configuration.GetSection("JWT");
 
             await Task.Delay(1);

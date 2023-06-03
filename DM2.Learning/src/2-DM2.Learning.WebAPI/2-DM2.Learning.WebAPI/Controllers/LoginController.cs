@@ -25,10 +25,12 @@ namespace _2_DM2.Learning.WebAPI.Controllers
         {
             var authentication = await _loginAppService.Authenticate(login, password);
 
-            if (!authentication.Authenticate) 
+            if (!authentication.Authenticate)
                 return NotFound();
 
             return Ok(authentication);
         }
+
+       
     }
 }
