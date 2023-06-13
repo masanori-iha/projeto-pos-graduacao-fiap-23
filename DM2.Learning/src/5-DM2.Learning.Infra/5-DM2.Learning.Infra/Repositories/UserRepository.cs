@@ -12,18 +12,9 @@ namespace _5_DM2.Learning.Infra.Repositories
 {
     public class UserRepository : IUserRpository
     {
-        private readonly UserManager<AppUser> _user;
-        public UserRepository(UserManager<AppUser> user)
-        {
-            _user = user;
-        }
-
         public async Task<bool> ValidateUser(string login, string password)
         {
-            var user = await _user.FindByNameAsync(login);
-
-            var result = _user != null && await _user.CheckPasswordAsync(user, password);
-            return result;
+            return true;
         }
     }
 }
