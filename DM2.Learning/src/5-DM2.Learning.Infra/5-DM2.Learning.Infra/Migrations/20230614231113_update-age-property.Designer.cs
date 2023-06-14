@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _5_DM2.Learning.Infra.Context;
 
@@ -11,9 +12,10 @@ using _5_DM2.Learning.Infra.Context;
 namespace _5_DM2.Learning.Infra.Migrations
 {
     [DbContext(typeof(DM2Context))]
-    partial class DM2ContextModelSnapshot : ModelSnapshot
+    [Migration("20230614231113_update-age-property")]
+    partial class updateageproperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

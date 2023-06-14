@@ -12,6 +12,8 @@ namespace _2_DM2.Learning.WebAPI.Configuration
         {
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<ILoginAppService, LoginAppService>();
+            services.AddScoped<IUserAppService, UserAppService>();
+            services.AddScoped<IUserService, UserService>();
 
 
             services.AddScoped<IUserRpository, UserRepository>();

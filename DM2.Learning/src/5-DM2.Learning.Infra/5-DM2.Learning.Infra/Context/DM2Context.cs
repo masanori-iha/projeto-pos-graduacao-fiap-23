@@ -1,5 +1,4 @@
 ﻿using _4_DM2.Learning.Domain.Entities;
-using _4_DM2.Learning.Domain.IdentityModels;
 using _5_DM2.Learning.Infra.Repositories;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

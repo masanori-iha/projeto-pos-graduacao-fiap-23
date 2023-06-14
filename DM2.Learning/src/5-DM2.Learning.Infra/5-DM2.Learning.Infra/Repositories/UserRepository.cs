@@ -1,7 +1,8 @@
-﻿using _4_DM2.Learning.Domain.IdentityModels;
+﻿using _4_DM2.Learning.Domain.Entities;
 using _4_DM2.Learning.Domain.Interfaces.Repositories;
 using _5_DM2.Learning.Infra.Context;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,13 +21,14 @@ namespace _5_DM2.Learning.Infra.Repositories
         }
         public async Task<bool> ValidateUser(string login, string password)
         {
+            await Task.Delay(1);
+
             return true;
         }
 
-        public async Task<User> GetUserById(Guid id)
+        public async Task<User> GetUserByName(string name)
         {
-            return await _context.FindAsync<User>(id);
+            return await _context.Users.Include(user => user.UserImage).FirstOrDefaultAsync(user => user.Name.Equals(name));
         }
-        
     }
 }

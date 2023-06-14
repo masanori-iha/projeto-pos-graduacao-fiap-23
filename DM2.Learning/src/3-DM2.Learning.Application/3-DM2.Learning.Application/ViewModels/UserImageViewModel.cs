@@ -6,13 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _4_DM2.Learning.Domain.Entities
+namespace _3_DM2.Learning.Application.ViewModels
 {
-    public class UserImage
+    public class UserImageViewModel
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public Guid UserId { get; set; }
-        public User User { get; set; }
     }
 }

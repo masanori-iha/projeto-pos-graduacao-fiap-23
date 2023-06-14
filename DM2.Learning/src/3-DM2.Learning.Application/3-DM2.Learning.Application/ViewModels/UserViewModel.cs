@@ -8,13 +8,13 @@ using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _4_DM2.Learning.Domain.Entities
+namespace _3_DM2.Learning.Application.ViewModels
 {
-    public class User
+    public class UserViewModel
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public int Age { get; set; } 
-        public UserImage UserImage { get; set; } 
+        public string? Name { get; set; }
+        public int Age { get; set; }
+        public UserImageViewModel UserImage { get; set; }
     }
 }
