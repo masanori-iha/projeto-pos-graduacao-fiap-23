@@ -13,19 +13,31 @@ namespace _3_DM2.Learning.Application.Services
 {
     public class UserService : IUserService
     {
-        private readonly IConfiguration _configuration;
-        private readonly IUserRpository _userRpository;
+        private readonly IUserRpository _userRepository;
 
-        public UserService(IConfiguration configuration,
-                            IUserRpository userRpository)
+        public UserService(IUserRpository userRpository)
         {
-            _configuration = configuration;
-            _userRpository = userRpository;
+            _userRepository = userRpository;
         }
 
         public async Task<User> GetUserByName(string name)
         {
-            return await _userRpository.GetUserByName(name);
+            return await _userRepository.GetUserByName(name);
+        }
+
+        public async Task<User> GetUserById(Guid id)
+        {
+            return await _userRepository.GetUserById(id);
+        }
+
+        public async Task AddUser(User user)
+        {
+            await _userRepository.AddUser(user);
+        }
+
+        public async Task Edituser(User user)
+        {
+            await _userRepository.EditUser(user);
         }
     }
 }

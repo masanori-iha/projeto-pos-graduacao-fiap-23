@@ -1,4 +1,5 @@
 ﻿using _3_DM2.Learning.Application.interfaces;
+using _3_DM2.Learning.Application.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,15 +17,70 @@ namespace _2_DM2.Learning.WebAPI.Controllers
             _userAppService = userAppService;
         }
 
-        [HttpGet("[action]")]
+        [HttpGet("[action]/{name}")]
         public async Task<IActionResult> GetUserByName(string name)
         {
-            var user = await _userAppService.GetUserByName(name);
+            try
+            {
+                var user = await _userAppService.GetUserByName(name);
 
-            if (user == null)
-                return NotFound();
+                if (user == null)
+                    return NotFound();
 
-            return Ok(user);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("[action]/{id:guid}")]
+        public async Task<IActionResult> GetUserById(Guid id)
+        {
+            try
+            {
+                var user = await _userAppService.GetUserById(id);
+
+                if (user == null)
+                    return NotFound();
+
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> AddUser(UserViewModel userViewModel)
+        {
+            try
+            {
+                await _userAppService.AddUser(userViewModel);
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> EditUser(UserViewModel userViewModel)
+        {
+            try
+            {
+                await _userAppService.EditUser(userViewModel);
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

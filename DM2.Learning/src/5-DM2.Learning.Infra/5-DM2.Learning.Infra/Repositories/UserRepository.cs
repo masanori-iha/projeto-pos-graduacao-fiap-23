@@ -30,5 +30,30 @@ namespace _5_DM2.Learning.Infra.Repositories
         {
             return await _context.Users.Include(user => user.UserImage).FirstOrDefaultAsync(user => user.Name.Equals(name));
         }
+
+        public async Task<User> GetUserById(Guid id)
+        {
+            return await _context.Users.Include(user => user.UserImage).FirstOrDefaultAsync(user => user.Id.Equals(id));
+        }
+
+        public async Task AddUser(User user)
+        {
+            await _context.AddAsync(user);
+
+            await SaveChanges();
+        }
+
+        public async Task EditUser(User user)
+        {
+            _context.Attach(user).State = EntityState.Modified;
+            _context.Attach(user.UserImage).State = EntityState.Modified;
+
+            await SaveChanges();
+        }
+
+        private async Task SaveChanges()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }
