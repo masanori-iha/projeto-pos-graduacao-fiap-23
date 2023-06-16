@@ -12,13 +12,10 @@ using System.Threading.Tasks;
 
 namespace _5_DM2.Learning.Infra.Repositories
 {
-    public class UserRepository : IUserRpository
+    public class UserRepository : BaseRepository, IUserRepository
     {
-        private readonly DM2Context _context;
-        public UserRepository(DM2Context dM2Context)
-        {
-            _context = dM2Context;
-        }
+        public UserRepository(DM2Context dM2Context) : base(dM2Context) {}
+
         public async Task<bool> ValidateUser(string login, string password)
         {
             await Task.Delay(1);
@@ -51,9 +48,13 @@ namespace _5_DM2.Learning.Infra.Repositories
             await SaveChanges();
         }
 
-        private async Task SaveChanges()
+        public async Task DeleteUser(Guid id)
         {
-            await _context.SaveChangesAsync();
+            User user = await GetUserById(id);
+
+            _context.Remove(user);
+
+            await SaveChanges();
         }
     }
 }

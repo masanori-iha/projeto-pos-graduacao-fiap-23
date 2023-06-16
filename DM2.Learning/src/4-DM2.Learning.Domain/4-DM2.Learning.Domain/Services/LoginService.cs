@@ -13,10 +13,10 @@ namespace _3_DM2.Learning.Application.Services
     public class LoginService : ILoginService
     {
         private readonly IConfiguration _configuration;
-        private readonly IUserRpository _userRpository;
+        private readonly IUserRepository _userRpository;
 
         public LoginService(IConfiguration configuration,
-                            IUserRpository userRpository)
+                            IUserRepository userRpository)
         {
             _configuration = configuration;
             _userRpository = userRpository;

@@ -13,6 +13,7 @@ namespace _3_DM2.Learning.Application.interfaces
         Task<UserViewModel> GetUserById(Guid id);
         Task AddUser(UserViewModel userViewModel);
         Task EditUser(UserViewModel userViewModel);
+        Task DeleteUser(Guid id);
 
     }
 }

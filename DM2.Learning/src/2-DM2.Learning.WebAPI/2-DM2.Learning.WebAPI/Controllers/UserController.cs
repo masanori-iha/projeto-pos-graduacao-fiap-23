@@ -68,12 +68,27 @@ namespace _2_DM2.Learning.WebAPI.Controllers
             }
         }
 
-        [HttpPost("[action]")]
+        [HttpPut("[action]")]
         public async Task<IActionResult> EditUser(UserViewModel userViewModel)
         {
             try
             {
                 await _userAppService.EditUser(userViewModel);
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("[action]/{id:guid}")]
+        public async Task<IActionResult> DeleteUser(Guid id)
+        {
+            try
+            {
+                await _userAppService.DeleteUser(id);
 
                 return Ok();
             }

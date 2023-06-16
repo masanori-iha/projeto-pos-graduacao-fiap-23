@@ -14,5 +14,6 @@ namespace _4_DM2.Learning.Domain.Interfaces.Domains
         Task<User> GetUserById(Guid id);
         Task AddUser(User user);
         Task Edituser(User user);
+        Task DeleteUser(Guid id);
     }
 }

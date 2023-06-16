@@ -42,5 +42,10 @@ namespace _3_DM2.Learning.Application.Services
         {
             await _userService.Edituser(_mapper.Map<User>(userViewModel));
         }
+
+        public async Task DeleteUser(Guid id)
+        {
+            await _userService.DeleteUser(id);
+        }
     }
 }

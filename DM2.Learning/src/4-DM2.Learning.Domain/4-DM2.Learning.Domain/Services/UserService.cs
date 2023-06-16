@@ -13,9 +13,9 @@ namespace _3_DM2.Learning.Application.Services
 {
     public class UserService : IUserService
     {
-        private readonly IUserRpository _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(IUserRpository userRpository)
+        public UserService(IUserRepository userRpository)
         {
             _userRepository = userRpository;
         }
@@ -38,6 +38,10 @@ namespace _3_DM2.Learning.Application.Services
         public async Task Edituser(User user)
         {
             await _userRepository.EditUser(user);
+        }
+        public async Task DeleteUser(Guid id)
+        {
+            await _userRepository.DeleteUser(id);
         }
     }
 }
