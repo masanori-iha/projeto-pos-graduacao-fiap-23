@@ -1,19 +1,12 @@
 ﻿using _4_DM2.Learning.Domain.Entities;
-using _4_DM2.Learning.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace _4_DM2.Learning.Domain.Interfaces.Domains
+namespace _4_DM2.Learning.Domain.Interfaces.Domains;
+
+public interface IUserService
 {
-    public interface IUserService
-    {
-        Task<User> GetUserByName(string name);
-        Task<User> GetUserById(Guid id);
-        Task AddUser(User user);
-        Task Edituser(User user);
-        Task DeleteUser(Guid id);
-    }
+    Task<User> GetUserByName(string name);
+    Task<User> GetUserById(Guid id);
+    Task AddUser(User user);
+    Task Edituser(User user);
+    Task DeleteUser(Guid id);
 }

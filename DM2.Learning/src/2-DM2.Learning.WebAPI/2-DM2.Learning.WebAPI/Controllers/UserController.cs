@@ -1,101 +1,100 @@
 ﻿using _3_DM2.Learning.Application.interfaces;
 using _3_DM2.Learning.Application.ViewModels;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace _2_DM2.Learning.WebAPI.Controllers
+namespace _2_DM2.Learning.WebAPI.Controllers;
+
+[AllowAnonymous]
+[Route("api/[controller]")]
+[ApiController]
+[Authorize]
+public class UserController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    [Authorize]
-    public class UserController : ControllerBase
+    private readonly IUserAppService _userAppService;
+    public UserController(IUserAppService userAppService)
     {
-        private readonly IUserAppService _userAppService;
-        public UserController(IUserAppService userAppService)
+        _userAppService = userAppService;
+    }
+
+    [HttpGet("[action]/{name}")]
+    public async Task<IActionResult> GetUserByName(string name)
+    {
+        try
         {
-            _userAppService = userAppService;
+            var user = await _userAppService.GetUserByName(name);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
         }
-
-        [HttpGet("[action]/{name}")]
-        public async Task<IActionResult> GetUserByName(string name)
+        catch (Exception e)
         {
-            try
-            {
-                var user = await _userAppService.GetUserByName(name);
-
-                if (user == null)
-                    return NotFound();
-
-                return Ok(user);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            return BadRequest(e.Message);
         }
+    }
 
-        [HttpGet("[action]/{id:guid}")]
-        public async Task<IActionResult> GetUserById(Guid id)
+    [HttpGet("[action]/{id:guid}")]
+    public async Task<IActionResult> GetUserById(Guid id)
+    {
+        try
         {
-            try
-            {
-                var user = await _userAppService.GetUserById(id);
+            var user = await _userAppService.GetUserById(id);
 
-                if (user == null)
-                    return NotFound();
+            if (user == null)
+                return NotFound();
 
-                return Ok(user);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            return Ok(user);
         }
-
-        [HttpPost("[action]")]
-        public async Task<IActionResult> AddUser(UserViewModel userViewModel)
+        catch (Exception e)
         {
-            try
-            {
-                await _userAppService.AddUser(userViewModel);
-
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            return BadRequest(e.Message);
         }
+    }
 
-        [HttpPut("[action]")]
-        public async Task<IActionResult> EditUser(UserViewModel userViewModel)
+    [HttpPost("[action]")]
+    public async Task<IActionResult> AddUser(UserViewModel userViewModel)
+    {
+        try
         {
-            try
-            {
-                await _userAppService.EditUser(userViewModel);
+            await _userAppService.AddUser(userViewModel);
 
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+            return Ok();
         }
-
-        [HttpDelete("[action]/{id:guid}")]
-        public async Task<IActionResult> DeleteUser(Guid id)
+        catch (Exception e)
         {
-            try
-            {
-                await _userAppService.DeleteUser(id);
+            return BadRequest(e.Message);
+        }
+    }
 
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+    [HttpPut("[action]")]
+    public async Task<IActionResult> EditUser(UserViewModel userViewModel)
+    {
+        try
+        {
+            await _userAppService.EditUser(userViewModel);
+
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
+    [HttpDelete("[action]/{id:guid}")]
+    public async Task<IActionResult> DeleteUser(Guid id)
+    {
+        try
+        {
+            await _userAppService.DeleteUser(id);
+
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
         }
     }
 }

@@ -12,8 +12,8 @@ using _5_DM2.Learning.Infra.Context;
 namespace _5_DM2.Learning.Infra.Migrations
 {
     [DbContext(typeof(DM2Context))]
-    [Migration("20230614231113_update-age-property")]
-    partial class updateageproperty
+    [Migration("20230618010701_teste")]
+    partial class teste
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
