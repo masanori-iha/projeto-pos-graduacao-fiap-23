@@ -16,6 +16,7 @@
      }
 
      static UploadUserImage(image) {
+
          let formData = new FormData();
          formData.append('files', image);
 
@@ -37,7 +38,7 @@
      }
 
      static GetAll() {
-         $.ajax({
+         return $.ajax({
              url: "GetAll",
              type: 'GET',
              data: {},
@@ -45,15 +46,13 @@
                  return response;
              },
              error: function (err) {
-                 console.log(err);
-
                  return err;
              }
          });
      }
 
      static GetUserDetails(id) {
-         $.ajax({
+         return $.ajax({
              url: "GetUserDetails",
              type: 'GET',
              data: { id },
@@ -67,7 +66,7 @@
      }
 
      static GetUserEdit(id) {
-         $.ajax({
+         return $.ajax({
              url: "GetUserEdit",
              type: 'GET',
              data: { id },
@@ -81,7 +80,7 @@
      }
 
      static DeleteUser(id) {
-         $.ajax({
+         return $.ajax({
              url: "Delete",
              type: 'DELETE',
              data: { id },
