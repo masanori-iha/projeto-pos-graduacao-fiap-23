@@ -67,9 +67,23 @@
 
      static GetUserEdit(id) {
          return $.ajax({
-             url: "GetUserEdit",
+             url: "Update",
              type: 'GET',
              data: { id },
+             success: function (response) {
+                 return response;
+             },
+             error: function (err) {
+                 return err;
+             }
+         });
+     }
+
+     static Update(userUpdate) {
+         return $.ajax({
+             url: "Update",
+             type: 'PUT',
+             data: JSON.stringify(userUpdate),
              success: function (response) {
                  return response;
              },

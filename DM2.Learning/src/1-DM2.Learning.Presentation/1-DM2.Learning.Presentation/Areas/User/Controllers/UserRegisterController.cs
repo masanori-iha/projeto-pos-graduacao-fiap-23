@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using _6_DM2.Learning.Infra.WeAPI.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace _1_DM2.Learning.Presentation.Areas.User.Controllers;
 
@@ -54,7 +55,7 @@ public class UserRegisterController : Controller
         return PartialView("_UserList", users);
     }
 
-    public async Task<IActionResult> GetUserEdit(Guid id)
+    public async Task<IActionResult> Update(Guid id)
     {
         var user = await _user.GetUserById(id);
 
@@ -62,9 +63,11 @@ public class UserRegisterController : Controller
     }
 
     [HttpPut]
-    public async Task<IActionResult> UserEdit(Guid id)
+    public async Task<IActionResult> Update(UserViewModel userUpdate)
     {
-        var user = await _user.GetUserById(id);
+        await _user.Update(userUpdate);
+
+        var user = await _user.GetUserById(userUpdate.Id);
 
         return PartialView("_UserEdit", user);
     }

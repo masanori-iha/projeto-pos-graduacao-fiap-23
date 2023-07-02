@@ -7,4 +7,5 @@ public class AppSetting
     public string GetAllUser { get; set; }
     public string DeleteUser { get; set; }
     public string Createuser { get; set; }
+    public string UpdateUser { get; set; }
 }

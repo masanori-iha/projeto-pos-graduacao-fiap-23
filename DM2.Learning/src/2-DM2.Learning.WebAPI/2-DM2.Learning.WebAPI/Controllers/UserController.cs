@@ -87,7 +87,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPut("[action]")]
-    public async Task<IActionResult> EditUser(UserViewModel userViewModel)
+    public async Task<IActionResult> UpdateUser(UserViewModel userViewModel)
     {
         try
         {

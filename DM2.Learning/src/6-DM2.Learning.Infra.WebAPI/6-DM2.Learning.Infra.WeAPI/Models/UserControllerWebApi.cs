@@ -1,4 +1,5 @@
 ﻿using _3_DM2.Learning.Application.ViewModels;
+using _4_DM2.Learning.Domain.Entities;
 using Microsoft.Extensions.Options;
 using System;
 using System.Net;
@@ -55,6 +56,15 @@ public class UserControllerWebApi
         return data;
     }
 
+    public async Task Update(UserViewModel userUpdate)
+    {
+        var url = new Uri($"{_appSetting.BaseApiUrl}{_appSetting.UpdateUser}");
+
+        var content = ToRequest(userUpdate);
+
+        var resposta = await _httpClient.PutAsync(url, content);
+    }
+
     public async Task<UserViewModel> GetUserById(Guid id)
     {
         var uri = new Uri($"{_appSetting.BaseApiUrl}{_appSetting.GetUser}{id}");
@@ -107,4 +117,5 @@ public class UserControllerWebApi
 
         return;
     }
+
 }
