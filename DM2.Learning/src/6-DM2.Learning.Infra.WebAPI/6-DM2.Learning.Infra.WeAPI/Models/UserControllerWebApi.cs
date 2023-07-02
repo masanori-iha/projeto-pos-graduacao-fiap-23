@@ -1,9 +1,12 @@
 ﻿using _3_DM2.Learning.Application.ViewModels;
 using Microsoft.Extensions.Options;
+using System;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace _6_DM2.Learning.Infra.WeAPI.Models;
 
@@ -20,16 +23,14 @@ public class UserControllerWebApi
 
     public async Task Create(UserViewModel user)
     {
-        Uri uri = new Uri($"{_appSetting.BaseApiUrl}{_appSetting.Createuser}");
-
         try
         {
-            var myContent = System.Text.Json.JsonSerializer.Serialize(user);
-            var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
-            var byteContent = new ByteArrayContent(buffer);
-            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var url = new Uri($"{_appSetting.BaseApiUrl}{_appSetting.Createuser}");
+            
+            var content = ToRequest(user);
 
-            await _httpClient.PostAsync($"{uri}", byteContent);
+            // Faça a chamada POST e aguarde a resposta
+            var resposta = await _httpClient.PostAsync(url, content);
 
         }
         catch (Exception ex)
@@ -37,6 +38,21 @@ public class UserControllerWebApi
 
         }
         return;
+    }
+
+    private static StringContent ToRequest(object obj)
+    {
+        var jsonSerializerOptions = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+            IgnoreReadOnlyProperties = true,
+            WriteIndented = true
+        };
+
+        var json = JsonSerializer.Serialize(obj, jsonSerializerOptions);
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+        return data;
     }
 
     public async Task<UserViewModel> GetUserById(Guid id)

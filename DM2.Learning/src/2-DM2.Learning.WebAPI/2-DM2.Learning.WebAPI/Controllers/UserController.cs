@@ -72,7 +72,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> AddUser([FromBody] UserViewModel userViewModel)
+    public async Task<IActionResult> AddUser(UserViewModel userViewModel)
     {
         try
         {
