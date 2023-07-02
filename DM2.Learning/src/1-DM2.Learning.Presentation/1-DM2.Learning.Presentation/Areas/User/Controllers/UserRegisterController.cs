@@ -50,7 +50,7 @@ public class UserRegisterController : Controller
     {
         await _user.Create(user);
 
-        var users = _user.GetAll();
+        var users = await _user.GetAll();
 
         return PartialView("_UserList", users);
     }
