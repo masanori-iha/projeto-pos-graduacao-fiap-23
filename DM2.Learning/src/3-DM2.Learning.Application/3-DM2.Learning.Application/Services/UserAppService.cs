@@ -17,6 +17,13 @@ public class UserAppService : IUserAppService
         _userService = userService;
     }
 
+    public async Task<IEnumerable<UserViewModel>> GetAll()
+    {
+        var users = await _userService.GetAll();
+
+        return _mapper.Map<IEnumerable<UserViewModel>>(users);
+    }
+
     public async Task<UserViewModel> GetUserByName(string name)
     {
         var user = await _userService.GetUserByName(name);

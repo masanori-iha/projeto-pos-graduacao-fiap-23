@@ -1,3 +1,5 @@
+
+
 html {
   font-size: 14px;
 }
@@ -15,4 +17,22 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: .80em;
+}
+
+:root {
+    /*color*/
+    --blue-4: #081932;
+    --black-4: #000;
+    --white: #fff;
 }

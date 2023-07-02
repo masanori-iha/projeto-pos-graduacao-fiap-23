@@ -17,6 +17,24 @@ public class UserController : ControllerBase
         _userAppService = userAppService;
     }
 
+    [HttpGet("[action]")]
+    public async Task<IActionResult> GetAll()
+    {
+        try
+        {
+            var users = await _userAppService.GetAll();
+
+            if (!users.Any())
+                return NotFound();
+
+            return Ok(users);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
     [HttpGet("[action]/{name}")]
     public async Task<IActionResult> GetUserByName(string name)
     {
@@ -54,7 +72,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> AddUser(UserViewModel userViewModel)
+    public async Task<IActionResult> AddUser([FromBody] UserViewModel userViewModel)
     {
         try
         {

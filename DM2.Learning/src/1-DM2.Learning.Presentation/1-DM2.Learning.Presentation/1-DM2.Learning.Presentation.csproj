@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -6,5 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>_1_DM2.Learning.Presentation</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.16" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="6.0.16" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\3-DM2.Learning.Application\3-DM2.Learning.Application\3-DM2.Learning.Application.csproj" />
+    <ProjectReference Include="..\..\6-DM2.Learning.Infra.WebAPI\6-DM2.Learning.Infra.WeAPI\6-DM2.Learning.Infra.WeAPI.csproj" />
+  </ItemGroup>
 
 </Project>

@@ -7,3 +7,16 @@ public class UserViewModel
     public int Age { get; set; }
     public UserImageViewModel UserImage { get; set; }
 }
+
+public class UserViewModelTeste
+{
+    public UserViewModelTeste()
+    {
+        UserImage = new UserImageViewModel();
+    }
+
+    public string? Name { get; set; }
+    public int Age { get; set; }
+
+    public UserImageViewModel UserImage { get; set; }
+}

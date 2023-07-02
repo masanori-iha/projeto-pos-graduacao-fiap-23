@@ -1,0 +1,33 @@
+﻿.container-title {
+    width: 100%;
+    background: var(--blue-4);
+    padding: .6em;
+    border-radius: .3em;
+    color: whitesmoke;
+}
+
+.container-title {
+    width: 100%;
+    background: var(--blue-4);
+    padding: .6em;
+    border-radius: .3em;
+    color: whitesmoke;
+}
+
+.user-foto {
+    background-color: #ddd;
+    border-radius: 0.3em;
+    height: 170px;
+    object-fit: inherit;
+    width: 140px;
+}
+
+.container-user-list {
+    overflow: auto;
+    border-radius: .3em;
+}
+
+.user-create-get {
+    max-width: 20%;
+    margin-bottom: .5em;
+}

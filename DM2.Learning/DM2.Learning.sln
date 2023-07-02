@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1-DM2.Learning.Presentation", "src\1-DM2.Learning.Presentation\1-DM2.Learning.Presentation\1-DM2.Learning.Presentation.csproj", "{C2A9D1A0-93B2-4E2F-9BFE-0CF52CD63865}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1-DM2.Learning.Presentation", "src\1-DM2.Learning.Presentation\1-DM2.Learning.Presentation\1-DM2.Learning.Presentation.csproj", "{C2A9D1A0-93B2-4E2F-9BFE-0CF52CD63865}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2-DM2.Learning.WebAPI", "src\2-DM2.Learning.WebAPI\2-DM2.Learning.WebAPI\2-DM2.Learning.WebAPI.csproj", "{3FEC358E-7A15-47AA-851A-B9D538C52F28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2-DM2.Learning.WebAPI", "src\2-DM2.Learning.WebAPI\2-DM2.Learning.WebAPI\2-DM2.Learning.WebAPI.csproj", "{3FEC358E-7A15-47AA-851A-B9D538C52F28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3-DM2.Learning.Application", "src\3-DM2.Learning.Application\3-DM2.Learning.Application\3-DM2.Learning.Application.csproj", "{3B261764-386A-4CF9-94DF-DDFF035E728E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3-DM2.Learning.Application", "src\3-DM2.Learning.Application\3-DM2.Learning.Application\3-DM2.Learning.Application.csproj", "{3B261764-386A-4CF9-94DF-DDFF035E728E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4-DM2.Learning.Domain", "src\4-DM2.Learning.Domain\4-DM2.Learning.Domain\4-DM2.Learning.Domain.csproj", "{60CFEE3E-1B14-4D66-A709-FDEC5D673268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4-DM2.Learning.Domain", "src\4-DM2.Learning.Domain\4-DM2.Learning.Domain\4-DM2.Learning.Domain.csproj", "{60CFEE3E-1B14-4D66-A709-FDEC5D673268}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5-DM2.Learning.Infra", "src\5-DM2.Learning.Infra\5-DM2.Learning.Infra\5-DM2.Learning.Infra.csproj", "{F4B2D47C-1237-4F4F-9A35-39F1BF3A726F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5-DM2.Learning.Infra", "src\5-DM2.Learning.Infra\5-DM2.Learning.Infra\5-DM2.Learning.Infra.csproj", "{F4B2D47C-1237-4F4F-9A35-39F1BF3A726F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6-DM2.Learning.Infra.WeAPI", "src\6-DM2.Learning.Infra.WebAPI\6-DM2.Learning.Infra.WeAPI\6-DM2.Learning.Infra.WeAPI.csproj", "{768D67CF-427C-4EF7-903D-AC26EC791C98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{F4B2D47C-1237-4F4F-9A35-39F1BF3A726F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4B2D47C-1237-4F4F-9A35-39F1BF3A726F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4B2D47C-1237-4F4F-9A35-39F1BF3A726F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{768D67CF-427C-4EF7-903D-AC26EC791C98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{768D67CF-427C-4EF7-903D-AC26EC791C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{768D67CF-427C-4EF7-903D-AC26EC791C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{768D67CF-427C-4EF7-903D-AC26EC791C98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

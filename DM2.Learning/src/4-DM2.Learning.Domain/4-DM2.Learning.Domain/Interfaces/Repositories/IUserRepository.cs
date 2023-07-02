@@ -5,6 +5,7 @@ namespace _4_DM2.Learning.Domain.Interfaces.Repositories;
 public interface IUserRepository
 {
     Task<bool> ValidateUser(string login, string password);
+    Task<IEnumerable<User>> GetAll();
     Task<User> GetUserByName(string name);
     Task<User> GetUserById(Guid id);
     Task AddUser(User user);

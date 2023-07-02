@@ -16,6 +16,13 @@ public class UserRepository : BaseRepository, IUserRepository
         return true;
     }
 
+    public async Task<IEnumerable<User>> GetAll()
+    {
+        var users = await _context.Users.ToListAsync();
+
+        return users;
+    }
+
     public async Task<User> GetUserByName(string name)
     {
         var user =  await _context.Users

@@ -1,0 +1,32 @@
+﻿@model _3_DM2.Learning.Application.ViewModels.UserViewModel
+
+<h4>UserViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="_UserCreate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="form-label">Nome</label>
+                <input asp-for="Name" class="form-control Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Age" class="form-label">Idade</label>
+                <input asp-for="Age" class="form-control Age" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3 container-user-image" style="display: none;">
+                <label asp-for="UserImage.Name" class="form-label">Upload Foto</label>
+                <input asp-for="UserImage.Name" id="imgImage" class="form-control user-file" type="file" value="" />
+                <span asp-validation-for="UserImage.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-primary btn-create"><i class="text-white fa fa-plus-circle"></i> Adicionar </a>
+                <a class="btn btn-warning history-back"> Voltar </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="module" src="~/js/areas/user/cadastre/_usercreate.js"></script>

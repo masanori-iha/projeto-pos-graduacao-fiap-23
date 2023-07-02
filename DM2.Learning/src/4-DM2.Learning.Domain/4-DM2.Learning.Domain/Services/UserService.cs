@@ -13,6 +13,11 @@ public class UserService : IUserService
         _userRepository = userRpository;
     }
 
+    public async Task<IEnumerable<User>> GetAll()
+    {
+        return await _userRepository.GetAll();
+    }
+
     public async Task<User> GetUserByName(string name)
     {
         return await _userRepository.GetUserByName(name);

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<_3_DM2.Learning.Application.ViewModels.UserViewModel>
+
+<a class="btn btn-primary user-create-get"><i class="fa fa-plus"></i> Adicionar </a>
+
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td style="text-align: end;">
+                    <a class="btn btn-warning btn-details"> <i class="fa fa-pencil"></i> </a>
+                    <a class="btn btn-success btn-edit">  <i class="fa fa-edit"></i>   </a>
+                    <a class="btn btn-danger btn-delete"> <i class="fa fa-trash"></i>  </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="module" src="~/js/areas/user/cadastre/_userlist.js"></script>
