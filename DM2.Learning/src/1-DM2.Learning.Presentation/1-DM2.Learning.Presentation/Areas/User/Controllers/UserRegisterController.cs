@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using _6_DM2.Learning.Infra.WeAPI.Models;
 using System.Diagnostics.CodeAnalysis;
+using _5._1_DM2.Learning.Infra.Azure.Storage.Dtos;
 
 namespace _1_DM2.Learning.Presentation.Areas.User.Controllers;
 
@@ -12,17 +13,26 @@ public class UserRegisterController : Controller
 {
     
     private readonly UserControllerWebApi _user;
+    private readonly UserImageControllerWebApi _userImage;
+    private readonly FileAzureStorageService _fileAzureStorageService;
 
-    public UserRegisterController(UserControllerWebApi user)
+    public UserRegisterController(UserControllerWebApi user, 
+                                  UserImageControllerWebApi userImage, 
+                                  FileAzureStorageService fileAzureStorageService)
     {
         _user = user;
+        _userImage = userImage;
+        _fileAzureStorageService = fileAzureStorageService;
     }
 
+    [HttpGet]
     public IActionResult Index()
     {
         return View();
     }
 
+    
+    [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         var users = await _user.GetAll();
@@ -33,6 +43,7 @@ public class UserRegisterController : Controller
         return PartialView("_UserList", users);
     }
 
+    [HttpGet]
     public async Task<IActionResult> GetUserDetails(Guid id)
     {
         var user = await _user.GetUserById(id);
@@ -40,7 +51,9 @@ public class UserRegisterController : Controller
         return PartialView("_UserDetails", user);
     }
 
-    public async Task<IActionResult> Create()
+
+    [HttpGet]
+    public IActionResult Create()
     {
         return PartialView("_UserCreate", new UserViewModel());
     }
@@ -50,11 +63,13 @@ public class UserRegisterController : Controller
     {
         await _user.Create(user);
 
-        var users = _user.GetAll();
+        var users = await _user.GetAll();
 
         return PartialView("_UserList", users);
     }
 
+    
+    [HttpGet]
     public async Task<IActionResult> Update(Guid id)
     {
         var user = await _user.GetUserById(id);
@@ -63,40 +78,49 @@ public class UserRegisterController : Controller
     }
 
     [HttpPut]
-    public async Task<IActionResult> Update(UserViewModel userUpdate)
+    public async Task<IActionResult> Update([FromBodyAttribute] UserImageUpdateViewModel userUpdate)
     {
         await _user.Update(userUpdate);
-
-        var user = await _user.GetUserById(userUpdate.Id);
-
-        return PartialView("_UserEdit", user);
-    }
-
-    [HttpDelete]
-    public async Task<IActionResult> Delete(Guid id)
-    {
-        await _user.Delete(id);
 
         var users = await _user.GetAll();
 
         return PartialView("_UserList", users);
     }
 
-
-    [HttpPost]
-    public async Task<IActionResult> RegisterNewUser([FromBody] UserViewModel NewUser)
+    
+    [HttpDelete]
+    public async Task<IActionResult> Delete(Guid id)
     {
-        if (NewUser == null) { 
-            return View("Error");
-        }
+        await _user.Delete(id);
 
-        return View("Index");
+        var users = await _user.GetAll();
+        return PartialView("_UserList", users);
     }
 
     [HttpPost]
-    public async Task<IActionResult> UploadUserImage(IEnumerable<IFormFile> files)
+    public async Task<IActionResult> UploadUserImage(Guid userImageId, IEnumerable<IFormFile> files, Guid userId)
     {
-        return View("Index");
+
+        var userImageViewModel = new UserImageViewModel();
+        userImageViewModel.Name = files.ToList()[0].FileName;
+        userImageViewModel.Id = userImageId;
+        userImageViewModel.UserId = userId;
+
+        await _userImage.Update(userImageViewModel);
+
+        await _fileAzureStorageService.UploadAsync(files.ToList()[0]);
+
+        return Json(new { success = true });
     }
 
+    [HttpDelete]
+    public async Task<IActionResult> RemoveUserImage(Guid userId, Guid imageId, string imageName)
+    {
+        await _userImage.Remove(imageId);
+
+        await _fileAzureStorageService.Excluir(imageName);
+
+        var user = await _user.GetUserById(userId);
+        return PartialView("_UserDetails", user);
+    }
 }

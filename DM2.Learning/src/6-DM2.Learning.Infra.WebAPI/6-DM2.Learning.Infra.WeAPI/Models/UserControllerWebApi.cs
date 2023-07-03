@@ -24,20 +24,11 @@ public class UserControllerWebApi
 
     public async Task Create(UserViewModel user)
     {
-        try
-        {
-            var url = new Uri($"{_appSetting.BaseApiUrl}{_appSetting.Createuser}");
-            
-            var content = ToRequest(user);
+        var url = new Uri($"{_appSetting.BaseApiUrl}{_appSetting.Createuser}");
+        var content = ToRequest(user);
 
-            // Faça a chamada POST e aguarde a resposta
-            var resposta = await _httpClient.PostAsync(url, content);
+        var resposta = await _httpClient.PostAsync(url, content);
 
-        }
-        catch (Exception ex)
-        {
-
-        }
         return;
     }
 
@@ -51,15 +42,15 @@ public class UserControllerWebApi
         };
 
         var json = JsonSerializer.Serialize(obj, jsonSerializerOptions);
-        var data = new StringContent(json, Encoding.UTF8, "application/json");
+        var content = new StringContent(json);
+        content.Headers.ContentType = new MediaTypeHeaderValue("Application/Json");
 
-        return data;
+        return content;
     }
 
-    public async Task Update(UserViewModel userUpdate)
+    public async Task Update(UserImageUpdateViewModel userUpdate)
     {
         var url = new Uri($"{_appSetting.BaseApiUrl}{_appSetting.UpdateUser}");
-
         var content = ToRequest(userUpdate);
 
         var resposta = await _httpClient.PutAsync(url, content);
@@ -69,7 +60,6 @@ public class UserControllerWebApi
     {
         var uri = new Uri($"{_appSetting.BaseApiUrl}{_appSetting.GetUser}{id}");
         var response = await _httpClient.GetAsync(uri);
-
         var userResult = await response.Content.ReadAsStringAsync();
 
         var jsonSerializerOptions = new JsonSerializerOptions

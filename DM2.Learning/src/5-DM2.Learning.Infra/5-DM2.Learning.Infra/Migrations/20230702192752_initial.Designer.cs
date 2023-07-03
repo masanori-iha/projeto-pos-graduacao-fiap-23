@@ -12,8 +12,8 @@ using _5_DM2.Learning.Infra.Context;
 namespace _5_DM2.Learning.Infra.Migrations
 {
     [DbContext(typeof(DM2Context))]
-    [Migration("20230618010701_teste")]
-    partial class teste
+    [Migration("20230702192752_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,11 +35,11 @@ namespace _5_DM2.Learning.Infra.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("_4_DM2.Learning.Domain.Entities.UserImage", b =>
@@ -49,8 +49,7 @@ namespace _5_DM2.Learning.Infra.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -60,7 +59,7 @@ namespace _5_DM2.Learning.Infra.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("UsersImages");
+                    b.ToTable("UsersImages", (string)null);
                 });
 
             modelBuilder.Entity("_4_DM2.Learning.Domain.Entities.UserImage", b =>
@@ -76,8 +75,7 @@ namespace _5_DM2.Learning.Infra.Migrations
 
             modelBuilder.Entity("_4_DM2.Learning.Domain.Entities.User", b =>
                 {
-                    b.Navigation("UserImage")
-                        .IsRequired();
+                    b.Navigation("UserImage");
                 });
 #pragma warning restore 612, 618
         }

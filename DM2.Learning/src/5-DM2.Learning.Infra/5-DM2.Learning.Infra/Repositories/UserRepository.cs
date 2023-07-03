@@ -50,8 +50,12 @@ public class UserRepository : BaseRepository, IUserRepository
 
     public async Task EditUser(User user)
     {
-        _context.Attach(user).State = EntityState.Modified;
-        _context.Attach(user.UserImage).State = EntityState.Modified;
+        user.UserImage = await _context.UsersImages.FirstOrDefaultAsync(x => x.UserId == user.Id);
+
+        _context.Users.Attach(user).State = EntityState.Modified;
+
+        if (user.UserImage != null)
+            _context.UsersImages.Attach(user.UserImage).State = EntityState.Modified;
 
         await SaveChanges();
     }

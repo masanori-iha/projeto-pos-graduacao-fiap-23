@@ -34,16 +34,3 @@ $('.register-user').on('click', function () {
 });
 
 
-$('.user-file').on('change', function () {
-    let userImage_name = document.getElementById("imgImage").files[0];
-
-    UserRegisterService.UploadUserImage(userImage_name)
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-});
-
-

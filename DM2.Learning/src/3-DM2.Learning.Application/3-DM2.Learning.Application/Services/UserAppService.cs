@@ -2,6 +2,7 @@
 using _3_DM2.Learning.Application.ViewModels;
 using _4_DM2.Learning.Domain.Entities;
 using _4_DM2.Learning.Domain.Interfaces.Domains;
+using _5._1_DM2.Learning.Infra.Azure.Storage.Dtos;
 using AutoMapper;
 
 namespace _3_DM2.Learning.Application.Services;
@@ -10,11 +11,15 @@ public class UserAppService : IUserAppService
 {
     private readonly IMapper _mapper;
     private readonly IUserService _userService;
+    private readonly FileAzureStorageService _fileAzureStorageService;
 
-    public UserAppService(IMapper mapper, IUserService userService)
+    public UserAppService(IMapper mapper, 
+                          IUserService userService, 
+                          FileAzureStorageService fileAzureStorageService)
     {
         _mapper = mapper;
         _userService = userService;
+        _fileAzureStorageService = fileAzureStorageService;
     }
 
     public async Task<IEnumerable<UserViewModel>> GetAll()
@@ -34,8 +39,14 @@ public class UserAppService : IUserAppService
     public async Task<UserViewModel> GetUserById(Guid id)
     {
         var user = await _userService.GetUserById(id);
+        var userViwModel = _mapper.Map<UserViewModel>(user);
 
-        return _mapper.Map<UserViewModel>(user);
+        if (!string.IsNullOrEmpty(userViwModel?.UserImage?.Name))
+            userViwModel.UserImage.Url = _fileAzureStorageService.ObterUrlBlob(userViwModel.UserImage.Name);
+        else
+            userViwModel.UserImage = new UserImageViewModel() { Url = string.Empty };
+            
+        return userViwModel;
     }
 
     public async Task AddUser(UserViewModel userViewModel)
@@ -45,7 +56,7 @@ public class UserAppService : IUserAppService
         await _userService.AddUser(user);
     }
 
-    public async Task EditUser(UserViewModel userViewModel)
+    public async Task EditUser(UserImageUpdateViewModel userViewModel)
     {
         var user = _mapper.Map<User>(userViewModel);
 

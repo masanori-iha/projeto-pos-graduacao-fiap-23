@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\3-DM2.Learning.Application\3-DM2.Learning.Application\3-DM2.Learning.Application.csproj" />
+    <ProjectReference Include="..\..\5.1-DM2.Learning.Infra.Azure.Storage\5.1-DM2.Learning.Infra.Azure.Storage\5.1-DM2.Learning.Infra.Azure.Storage.csproj" />
     <ProjectReference Include="..\..\6-DM2.Learning.Infra.WebAPI\6-DM2.Learning.Infra.WeAPI\6-DM2.Learning.Infra.WeAPI.csproj" />
   </ItemGroup>
 

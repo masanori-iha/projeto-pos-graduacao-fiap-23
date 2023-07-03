@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4-DM2.Learning.Domain", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5-DM2.Learning.Infra", "src\5-DM2.Learning.Infra\5-DM2.Learning.Infra\5-DM2.Learning.Infra.csproj", "{F4B2D47C-1237-4F4F-9A35-39F1BF3A726F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6-DM2.Learning.Infra.WeAPI", "src\6-DM2.Learning.Infra.WebAPI\6-DM2.Learning.Infra.WeAPI\6-DM2.Learning.Infra.WeAPI.csproj", "{768D67CF-427C-4EF7-903D-AC26EC791C98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6-DM2.Learning.Infra.WeAPI", "src\6-DM2.Learning.Infra.WebAPI\6-DM2.Learning.Infra.WeAPI\6-DM2.Learning.Infra.WeAPI.csproj", "{768D67CF-427C-4EF7-903D-AC26EC791C98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.1-DM2.Learning.Infra.Azure.Storage", "src\5.1-DM2.Learning.Infra.Azure.Storage\5.1-DM2.Learning.Infra.Azure.Storage\5.1-DM2.Learning.Infra.Azure.Storage.csproj", "{1545221A-58A8-4407-93FB-12FB389F68BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{768D67CF-427C-4EF7-903D-AC26EC791C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{768D67CF-427C-4EF7-903D-AC26EC791C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{768D67CF-427C-4EF7-903D-AC26EC791C98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1545221A-58A8-4407-93FB-12FB389F68BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1545221A-58A8-4407-93FB-12FB389F68BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1545221A-58A8-4407-93FB-12FB389F68BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1545221A-58A8-4407-93FB-12FB389F68BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

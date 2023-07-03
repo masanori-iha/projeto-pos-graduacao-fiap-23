@@ -12,8 +12,8 @@ $('.btn-create').on('click', function () {
 
             $('.container-user-list').html(response);
             $('.container-user-list').show(500);
-            $('.container-user').hide(500);
 
+            $('.container-user').hide(500);
             $('.container-user-image').show(500);
         })
         .catch(function (err) {

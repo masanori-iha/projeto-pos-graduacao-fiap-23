@@ -8,4 +8,5 @@ public class AppSetting
     public string DeleteUser { get; set; }
     public string Createuser { get; set; }
     public string UpdateUser { get; set; }
+    public string UpdateUserImage { get; set; }
 }

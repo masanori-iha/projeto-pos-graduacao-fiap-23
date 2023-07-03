@@ -14,7 +14,7 @@ public class UserImageConfiguration : IEntityTypeConfiguration<UserImage>
 
         builder.Property(t => t.Name)
             .HasColumnType("varchar(255)")
-            .IsRequired();
+            .IsRequired(false);
 
         builder
            .HasOne(user => user.User)

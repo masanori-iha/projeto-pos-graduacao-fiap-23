@@ -72,7 +72,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("[action]")]
-    public async Task<IActionResult> AddUser(UserViewModel userViewModel)
+    public async Task<IActionResult> AddUser([FromBody] UserViewModel userViewModel)
     {
         try
         {
@@ -87,7 +87,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPut("[action]")]
-    public async Task<IActionResult> UpdateUser(UserViewModel userViewModel)
+    public async Task<IActionResult> Update([FromBody] UserImageUpdateViewModel userViewModel)
     {
         try
         {

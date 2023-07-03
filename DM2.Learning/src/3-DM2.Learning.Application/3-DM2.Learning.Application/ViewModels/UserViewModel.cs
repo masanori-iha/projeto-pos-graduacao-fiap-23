@@ -5,18 +5,13 @@ public class UserViewModel
     public Guid Id { get; set; }
     public string? Name { get; set; }
     public int Age { get; set; }
-    public UserImageViewModel UserImage { get; set; }
+    public UserImageViewModel? UserImage { get; set; }
 }
 
-public class UserViewModelTeste
+public class UserImageUpdateViewModel
 {
-    public UserViewModelTeste()
-    {
-        UserImage = new UserImageViewModel();
-    }
-
+    public Guid Id { get; set; }
     public string? Name { get; set; }
     public int Age { get; set; }
-
-    public UserImageViewModel UserImage { get; set; }
+    public UserImageViewModel? UserImage { get; set; }
 }

@@ -13,6 +13,8 @@ public class DomainToViewModel : Profile
         CreateMap<AuthenticateTokenViewModel, AuthenticateToken>();
         CreateMap<UserViewModel, User>()
             .ForMember(dest => dest.UserImage, opt => opt.MapFrom(src => src.UserImage)).ReverseMap();
+        CreateMap<UserImageUpdateViewModel, User>()
+            .ForMember(dest => dest.UserImage, opt => opt.MapFrom(src => src.UserImage)).ReverseMap();
 
         CreateMap<UserImageViewModel, UserImage>().ReverseMap();
     }

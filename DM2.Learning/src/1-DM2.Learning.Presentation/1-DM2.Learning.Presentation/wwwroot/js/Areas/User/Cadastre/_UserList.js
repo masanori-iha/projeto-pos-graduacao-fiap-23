@@ -2,7 +2,7 @@
 
 $('.btn-details').on('click', function () {
 
-    let id = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
+    let id = $(this).data('user-id');
 
     UserRegisterService.GetUserDetails(id)
         .then(function (response) {
@@ -30,7 +30,7 @@ $('.user-create-get').on('click', function () {
 
 $('.btn-edit').on('click', function () {
 
-    let id = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
+    let id = $(this).data('user-id');
 
     UserRegisterService.GetUserEdit(id)
         .then(function (response) {
@@ -46,19 +46,15 @@ $('.btn-edit').on('click', function () {
 })
 
 $('.btn-delete').on('click', function () {
-
-    let id = '3fa85f64-5717-4562-b3fc-2c963f66afa6';
+    let id = $(this).data('user-id');
 
     UserRegisterService.DeleteUser(id)
         .then(function (response) {
-            $('.partial-user').html(response);
-            $('.container-user').hide(500);
-
-            $('.container-user-list').show(500);
+            console.log('response: ', response);
+            
         })
         .catch(function (err) {
-            $('.container-user').hide(500);
-            $('.container-user-list').show(500);
+            console.log('error')
         })
 
 })
