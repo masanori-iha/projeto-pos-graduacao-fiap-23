@@ -1,7 +1,6 @@
 ﻿import { UserRegisterService } from './Services/UserRegisterService.js';
 
 $('.btn-details').on('click', function () {
-
     let id = $(this).data('user-id');
 
     UserRegisterService.GetUserDetails(id)
@@ -29,7 +28,6 @@ $('.user-create-get').on('click', function () {
 })
 
 $('.btn-edit').on('click', function () {
-
     let id = $(this).data('user-id');
 
     UserRegisterService.GetUserEdit(id)
@@ -50,8 +48,7 @@ $('.btn-delete').on('click', function () {
 
     UserRegisterService.DeleteUser(id)
         .then(function (response) {
-            console.log('response: ', response);
-            
+            console.log('response: ', response);            
         })
         .catch(function (err) {
             console.log('error')
